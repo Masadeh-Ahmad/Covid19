@@ -1,0 +1,57 @@
+﻿@page
+@model Covid.Pages.Home.IndexModel
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+            <title>@ViewData["Title"] Covid</title>
+    <link rel="stylesheet" href="~/css/HomeStyle.css" />
+    </head>
+<body>
+
+    <div class = "title"><b> World Total Statistics </b></div>
+
+    <div class=" boxs">
+        <div class="box">Total Confirmed: @Model.TotalCases.TotalConfirmed</div>
+        <div class="box">Total Deaths: @Model.TotalCases.TotalDeaths</div>
+        <div class="box">Total Recovered: @Model.TotalCases.TotalRecovered</div>
+    </div>
+    
+
+    <div style="" class="title"><b> Get Statistics for a specific country </b> </div>
+
+
+    <form method="POST">
+
+		<input asp-for="SearchForm.CountryName" required >
+
+		<input type="date" asp-for="SearchForm.StartData" required>
+
+		<input type="date" asp-for="SearchForm.EndData" required>
+
+		<input type="submit" value="Search">
+		
+	</form>
+    
+
+    <div style="margin-top: 20px" class="container">
+  <div class="row">
+            @foreach (var one in @Model.SearchedCountries)
+    {
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header">
+                            <h3 class="card-title red-text">Date: @one.Date</h3>
+            </div>
+            <div class="card-body">
+                            <p>Number of Confirmed Cases: @one.Cases</p>
+            </div>
+          </div>
+        </div>
+    }
+  </div>
+</div>
+</body>
+</html>

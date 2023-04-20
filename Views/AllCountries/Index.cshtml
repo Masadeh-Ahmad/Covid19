@@ -1,0 +1,37 @@
+﻿@model List<Covid.Models.Country>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewData["Title"] Covid</title>
+    <link rel="stylesheet" href="~/css/HomeStyle.css" />
+</head>
+<body>
+<div class="title"><B>COVID19 Statistics For All Countries</B></div>
+
+    <div style="margin-top: 20px" class="container">
+        <div class="row">
+            @foreach (var one in Model)
+            {
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title red-text">Country: @one.CountryName,@one.CountryCode</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Total Confirmed Cases: @one.TotalConfirmed</p>
+                            <p>Total Deaths Cases: @one.TotalDeaths</p>
+                            <p>Total Recovered Cases: @one.TotalRecovered</p>
+                            <p>Data: @one.Date</p>
+                            <form style="margin-top:40px" method="POST" asp-controller="AllCountries" asp-action="AddOne">
+                                <input type="hidden" name="id" value="@one.ID">
+                                <input type="submit" value="ADD TO MT RECORDS">
+                              </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

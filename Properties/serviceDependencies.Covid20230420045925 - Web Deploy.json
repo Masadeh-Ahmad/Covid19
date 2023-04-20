@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/coviddbserver123/databases/Covid_db",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection"
+    },
+    "storage1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/covid2023ahmad",
+      "type": "storage.azure",
+      "connectionId": "DefaultConnection"
+    }
+  }
+}
